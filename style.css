@@ -1,0 +1,27 @@
+body {
+    background-color: navy;
+    color: blanchedalmond;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    color:rgb(220, 20, 193);
+    text-shadow:  0px 0px 5px white;
+}
+a{
+    color: yellow;
+}
+a:hover{
+    color:aqua;
+    text-shadow: 0px 0px 15px white;
+}
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+nav a{
+    margin: 0 50px;
+    font-size: larger;
+    font-weight: bold;
+}
