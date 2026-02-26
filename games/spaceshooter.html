@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>SpaceShooter</title>
+        
+        <style>body{background:black;}</style>
+    </head>
+    <body>
+        <h1>SpaceShooter</h1>
+        <canvas id="gameCanvas" width="400" height="640" style="background-color:rgb(85, 85, 85);"></canvas>
+        <script>
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            const ship = { x: canvas.width / 2, y: canvas.height - 30, width: 20, height: 20, speed: 4 };
+            const drawPlayer = () => {
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(ship.x - ship.width / 2, ship.y - ship.height / 2, ship.width, ship.height);
+            };
+            const drawScore = () => {
+                ctx.fillStyle = 'white';
+                ctx.font = '20px Arial';
+                ctx.fillText('Score: ' + score, 10, 25);
+            };
+            const drawLives = () => {
+                ctx.fillStyle = 'white';
+                ctx.font = '20px Arial';
+                ctx.fillText('Lives: ' + lives, canvas.width - 100, 25);
+            };
+            const keys = {};
+            window.addEventListener('keydown', (e) => { keys[e.key] = true; });
+            window.addEventListener('keyup', (e) => { keys[e.key] = false; });
+            const update = () => {
+                if (gameOver) return;
+                if (keys['ArrowLeft'] && ship.x - ship.width / 2 > 0) {
+                    ship.x -= ship.speed;
+                }
+                if (keys['ArrowRight'] && ship.x + ship.width / 2 < canvas.width) {
+                    ship.x += ship.speed;
+                }
+                bullets.forEach(b => b.y -= b.speed);
+                bullets = bullets.filter(b => b.y > 0);
+                enemies.forEach(e => {
+                    e.y += e.speed;
+                    if (e.y >= canvas.height - e.speed) lives--;
+                    if (lives <= 0) gameOver = true;
+                });
+                enemies = enemies.filter(e => e.y < canvas.height);
+                checkCollisions();
+            };
+            let score = 0;
+            let lives = 3;
+            let gameOver = false;
+            const gameLoop = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                update();
+                drawPlayer();
+                drawBullets();
+                drawEnemies();
+                drawScore();
+                drawLives();
+                if (gameOver === true) {
+                    ctx.fillStyle = 'red';
+                    ctx.font = '40px Arial';
+                    ctx.fillText('Game Over', canvas.width / 2 - 100, canvas.height / 2);
+                    return;
+                }
+                requestAnimationFrame(gameLoop);
+            };
+            let bullets = [];
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === ' ') {
+                        bullets.push({ x: ship.x, y: ship.y - ship.height / 2, width: 4, height: 10, speed: 6 });
+                    }
+                });
+            const drawBullets = () => {
+                ctx.fillStyle = 'red';
+                bullets.forEach((bullet) => {
+                    ctx.fillRect(bullet.x - bullet.width / 2, bullet.y - bullet.height, bullet.width, bullet.height);
+                });
+            };
+            let enemies = [];
+            const spawnEnemy = () => {
+                const x = Math.random() * (canvas.width);
+                enemies.push({ x, y: 0, width: 20, height: 20, speed: 2 });
+            };
+            const drawEnemies = () => {
+                ctx.fillStyle = 'green';
+                enemies.forEach((enemy) => {
+                    ctx.fillRect(enemy.x - enemy.width / 2, enemy.y - enemy.height / 2, enemy.width, enemy.height);
+                })};
+            const checkCollisions = () => {
+                bullets.forEach((bullet, bIndex) => {
+                    enemies.forEach((enemy, eIndex) => {
+                        if (bullet.x < enemy.x + enemy.width &&
+                            bullet.x + bullet.width > enemy.x &&
+                            bullet.y < enemy.y + enemy.height &&
+                            bullet.y + bullet.height > enemy.y) {
+                                score++;
+                                bullets.splice(bIndex, 1);
+                                enemies.splice(eIndex, 1);
+                        }
+                    });
+                });
+            };
+            setInterval(spawnEnemy, 1500); 
+            gameLoop();
+        </script>
+    </body>
+</html>
+    
+
+
