@@ -1,18 +1,19 @@
 body {
-    background-color: navy;
+    background-color: rgb(0, 69, 134);
     color: blanchedalmond;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "VT323", monospace;
 }
 
 h1 {
     color:rgb(220, 20, 193);
     text-shadow:  0px 0px 5px white;
+    font-family: 'press start 2p', monospace;
 }
 a{
     color: yellow;
 }
 a:hover{
-    color:aqua;
+    color: rgb(220, 20, 193);
     text-shadow: 0px 0px 15px white;
 }
 .container{
@@ -20,18 +21,25 @@ a:hover{
     text-align: center;
     margin: 0 auto;
     padding: 40px;
-    border: 3px dashed yellow;
+    border: 3px solid rgb(220, 20, 193);
     box-shadow: 0px 0px 20px cyan;
 }
 nav a{
     text-decoration: none;
     margin: 0 20px;
-    font-size: larger;
+    font-size: x-large;
     font-weight: bold;
 }
 marquee{
-    color: coral;
-    font-size: large;
-    font-style:oblique;
+    color: rgb(220, 20, 193);
+    font-family: "vt323", monospace;
+    font-size: xx-large;
     font-weight: bolder;
+}
+article{
+    background-color: rgb(5, 43, 78);
+    border: 2px solid rgb(220, 20, 193);
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 0px 10px cyan;
 }
