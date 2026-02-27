@@ -23,13 +23,33 @@
                 <p> A GALLERY OF MY ARTWORKS</p>
         </article>
         <div class="gallery">
-            <img src="https://picsum.photos/400/300" alt="artwork">
-            <img src="https://picsum.photos/400/500" alt="artwork">
-            <img src="https://picsum.photos/400/250" alt="artwork">
-            <img src="https://picsum.photos/400/300" alt="artwork">
-            <img src="https://picsum.photos/400/500" alt="artwork">
-            <img src="https://picsum.photos/400/250" alt="artwork">
+            <img src="images/20260113_200159.jpg" alt="artwork abstract mixmedia">
+            <img src="images/20260119_200114.jpg" alt="artwork oklahoma ok not painting">
+            <img src="images/20260119_200121.jpg" alt="artwork abstract mixmedia silver">
+            <img src="images/20260120_122953.jpg" alt="artwork pastel drawing sketchbook">
+            <img src="images/20260123_140833 3.jpg" alt="artwork skull painting gold">
+            <img src="images/20260128_201507.jpg" alt="artwork william blake inspired painting pastel">
+            <img src="images/20260202_203214.jpg" alt="artwork mount scott oklahoma painting abstract">
+            <img src="images/20260218_142943.jpg" alt="artwork abstract painting gold blue red">
+            <img src="images/20260219_142549.jpg" alt="artwork abstract painting blue red gold drips">
         </div>
         </div>
+        <div id="lightbox" class="lightbox-overlay">
+            <img id="lightbox-image" src="" alt="Enlarged Image">
+        </div>
+        <script>
+            const overlay = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const galleryImages = document.querySelectorAll('.gallery img');
+            galleryImages.forEach(function(img) {
+                img.addEventListener('click', function() {
+                    lightboxImage.src = img.src;
+                    overlay.style.display = 'block';
+                }); 
+                overlay.addEventListener('click', function() {
+                    overlay.style.display = 'none';
+                });
+            });
+       </script>
     </body>
 </html>
