@@ -35,16 +35,16 @@
         </div>
         </div>
         <div id="lightbox" class="lightbox-overlay">
-            <img id="lightbox-image" src="" alt="Enlarged Image">
+            <img id="lightbox-img" src="" alt="Enlarged Image">
         </div>
         <script>
             const overlay = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxImage = document.getElementById('lightbox-img');
             const galleryImages = document.querySelectorAll('.gallery img');
             galleryImages.forEach(function(img) {
                 img.addEventListener('click', function() {
                     lightboxImage.src = img.src;
-                    overlay.style.display = 'block';
+                    overlay.style.display = 'flex';
                 }); 
                 overlay.addEventListener('click', function() {
                     overlay.style.display = 'none';
