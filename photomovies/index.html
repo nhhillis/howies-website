@@ -2,15 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Howie's Photos and Movies</title>
+        <title>Howie's Art</title>
         <link rel="stylesheet" href="../style.css">
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     </head>
-    </head>
     <body>
         <div class="container">  
-        <marquee> Howie's Photos and Movies </marquee>     
-        <h1>HOWIE'S PHOTOS AND MOVIES </h1>
+        <marquee> Howie's Photo Gallery </marquee>     
+        <h1>HOWIE'S PHOTO GALLERY </h1>
             <nav>
                 <a href="../index.html">Home</a>
                 <a href="../blog/index.html">Blog</a>
@@ -22,9 +21,43 @@
             </nav>
         <p>GALLERY</p>
         <article> 
-                <a href="spaceshooter.html"><h2>spaceshooter - 20260225</h2></a>
-                <p> A GALLERY OF MY PHOTOS AND MOVIES</p>
+                <p> A GALLERY OF MY PHOTOGRAPHY AND MOVIES</p>
         </article>
+        <div class="gallery">
+            <img src="photos/20260206-DSC_6738.jpg" alt="Photo usnset stars road oklahoma">
+            <img src="photos/20251125-DSC_6270.jpg" alt="Photo river oklahoma ok trees fog">
+            <img src="photos/20251125-DSC_6249.jpg" alt="Photo river oklahoma ok trees fog rocks">
+            <img src="photos/20251110-DSC_6110.jpg" alt="Photo black and white oklahoma grass trees">
+            <img src="photos/20251025-DSC_6040.jpg" alt="Photo black and white oklahoma lake rocks trees">
+            <img src="photos/20251019-DSC_5980.jpg" alt="Photo black and white oklahoma grasses windmill sky">
+            <img src="photos/20251019-DSC_5975.jpg" alt="Photo black and white oklahoma grasses no hunting sky">
+            <img src="photos/20251008-DSC_5814.jpg" alt="Photo dirt road oklahoma sky clouds sunset">
+            <img src="photos/20250707-DSC_5666.jpg" alt="Photo black and white oklahoma windmill sky grasses">
+            <img src="photos/20250625-DSC_5616.jpg" alt="Photo black and white oklahoma trees trail path">
+            <img src="photos/20250610-DSC_5544.jpg" alt="Photo black and white oklahoma OKC skyline">
+            <img src="photos/20250520-DSC_5499.jpg" alt="Photo black and white oklahoma oil derrick sky">
+            <img src="photos/20250513-DSC_5393-Pano.jpg" alt="Photo black and white oklahoma yucca scrub sky">
+            <img src="photos/20250507-DSC_5384.jpg" alt="Photo black and white oklahoma farm equipment fan">
+            <img src="photos/20250503-DSC_5337.jpg" alt="Photo black and white oklahoma dirt road sky ">
+            <img src="photos/20250430-DSC_5206-Pano.jpg" alt="Photo color trees oklahoma sky clouds">
         </div>
+        </div>
+        <div id="lightbox" class="lightbox-overlay">
+            <img id="lightbox-img" src="" alt="Enlarged Image">
+        </div>
+        <script>
+            const overlay = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-img');
+            const galleryImages = document.querySelectorAll('.gallery img');
+            galleryImages.forEach(function(img) {
+                img.addEventListener('click', function() {
+                    lightboxImage.src = img.src;
+                    overlay.style.display = 'flex';
+                }); 
+                overlay.addEventListener('click', function() {
+                    overlay.style.display = 'none';
+                });
+            });
+       </script>
     </body>
 </html>
