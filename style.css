@@ -101,3 +101,35 @@ iframe{
   color: white;
   text-shadow: 0 0 8px magenta;
 }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.currently  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+.currently figure{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: rgb(5, 43, 78);
+    border: 2px solid rgb(220, 20, 193);
+    padding: auto;
+    margin: 5px 0;
+    box-shadow: 0px 0px 10px cyan;
+}
+.currently figure img{
+    width: 100%;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+.currently .currently-gallery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
